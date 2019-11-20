@@ -52,13 +52,6 @@ int main(){
 	return 0;
 }
 
-//primero = 13   actual = 20  anterior = 17  nodoBuscado = 17
-
-// 13 ->  16 ->  20 -> null
-
-// 17 -> 20
-
-
 void insertarNodo(){
 	struct nodo* nuevo = (struct nodo*) malloc(sizeof(struct nodo));
 	printf(" Ingrese el dato que tendra el nuevo nodo: ");
