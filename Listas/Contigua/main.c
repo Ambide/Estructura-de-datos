@@ -1,4 +1,4 @@
-#include "listacontigua.h"
+#include "listacontigua.c"
 
 int main(void) {
   
