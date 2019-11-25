@@ -1,6 +1,4 @@
-// Aquí van las instrucciones del programa
-
-#include "cola.h"
+#include "cola.c"
 
 int main(void) {
 
