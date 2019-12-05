@@ -1,13 +1,10 @@
-cola.o: cola.c
-	gcc cola.c -c -Wall
-main.o: main.c
-	gcc main.c -c -Wall
-
 a.out: main.o cola.o
 	gcc main.o cola.o
-
+main.o: main.c
+	gcc -c main.c
+cola.o: cola.c
+	gcc -c cola.c
 run: a.out
 	./a.out
-
-clean:
-	rm -f *.o a.out
+clear:
+	rm a.out main.o cola.o

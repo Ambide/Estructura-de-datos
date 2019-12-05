@@ -1,5 +1,6 @@
-#include "cola.h"
-
+#include"cola.h"
+struct nodo *frente = NULL;
+struct nodo *siguiente = NULL;
 void ponerencola(int valor)
 {
     struct nodo *nuevo = malloc(sizeof(struct nodo));
