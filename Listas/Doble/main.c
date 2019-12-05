@@ -2,14 +2,14 @@
 
 int main()
 {
-    int n, ch;
+    int n, opcion;
     do
     {
         printf("\n\nFunciones de la lista ligada doble");
         printf("\n1. Agregar al final \n2. Agregar al principio \n3. Eliminar\n4. Mostrar\n0. Salir\n");
         printf("\nEscoger opcion : ");
-        scanf("%d", &ch);
-        switch (ch)
+        scanf("%d", &opcion);
+        switch (opcion)
         {
             case 1:
                 printf("\nIngrese valor: ");
@@ -30,5 +30,5 @@ int main()
                 mostrar();
                 break;
         }
-    }while (ch != 0);
+    }while (opcion != 0);
 }
