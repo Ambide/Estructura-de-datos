@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* structure representing a node of the doubly linked list */
+/* Estructura que representa la lista doble */
 struct doblenodo
 {
     struct doblenodo *anterior;

@@ -1,23 +1,23 @@
-/* adds a new node at the end of the doubly linked list */
 #include "doble.h"
+/* añade un nuevo nodo al final de la lista doble */
 void agregarfinal(int num)
 {
     struct doblenodo *nuevo,  *temporal = primero;
 
-    /*create a new node */
+    /*Crea un nuevo nodo */
     nuevo = malloc(sizeof(struct doblenodo));
     nuevo->dato = num;
     nuevo->siguiente = NULL;
     nuevo->anterior = NULL;
 
-    /* if the linked list is empty */
+    /* Si la lista esta vacia */
     if (primero == NULL)
     {
         primero = nuevo;
     }
     else
     {
-        /* traverse the linked list till the last node is reached */
+        /* Recorre la lista doble hasta llegar al ultimo nodo */
         while (temporal->siguiente != NULL)
             temporal = temporal->siguiente;
 
@@ -26,15 +26,15 @@ void agregarfinal(int num)
     }
 }
 
-/* adds a new node at the begining of the linked list */
+/* Añade un nuevo nodo al principio de la lista doble */
 void agregarprincipio(int num)
 {
     struct doblenodo *nuevo;
 
-    /* create a new node */
+    /* Crea un nuevo nodo */
     nuevo = malloc(sizeof(struct doblenodo));
 
-    /* assign dato and pointer to the new node */
+    /* Asigna el dato y apunta al siguiente nodo */
     nuevo->anterior = NULL;
     nuevo->dato = num;
     nuevo->siguiente = primero;
@@ -45,18 +45,18 @@ void agregarprincipio(int num)
 }
 
 
-/* deletes the specified node from the doubly linked list */
+/* Borra un nodo especifico a traves del dato que contiene este. */
 void eliminar(int num)
 {
     struct doblenodo *temporal = primero;
 
-    /* traverse the entire linked list */
+    /* Recorre toda la lista doble */
     while (temporal != NULL)
     {
-        /* if node to be deleted is found */
+        /* Si se encuentra el nodo a eliminar*/
         if (temporal->dato == num)
         {
-            /* if node to be deleted is the first node */
+            /* Si el nodo a eliminar es el primero de la lista */
             if (temporal == primero)
             {
                 primero = primero->siguiente;
@@ -64,31 +64,31 @@ void eliminar(int num)
             }
             else
             {
-                /* if node to be deleted is the last node */
+                /* Si el nodo a eliminar es el ultimo de la lista */
                 if (temporal->siguiente == NULL)
                     temporal->anterior->siguiente = NULL;
                 else
-                /* if node to be deleted is any intermediate node */
+                /* Si el nodo a eliminar se encuentra entre 2 nodos */
                 {
                     temporal->anterior->siguiente = temporal->siguiente;
                     temporal->siguiente->anterior = temporal->anterior;
                 }
                 free(temporal);
             }
-            return ; /* return back after deletion */
+            return ; /* Regresa despues de eliminar el nodo. */
         }
-        temporal = temporal->siguiente; /* go to siguiente node */
+        temporal = temporal->siguiente; /* Pasa al siguiente nodo */
     }
     printf("\n%d no encontrado.", num);
 }
 
-/* mostrars the contents of the linked list */
+/* Muestra la lista doble */
 void mostrar()
 {
 	struct doblenodo *temporal = primero;
     printf("\n");
 
-    /* traverse the entire linked list */
+    /* Recorre la lista doble */
     while (temporal != NULL)
     {
         printf("%d\t", temporal->dato);
