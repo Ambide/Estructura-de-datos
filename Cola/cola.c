@@ -1,52 +1,46 @@
-// Aquí van las implementaciones de las funciones declaradas
-
 #include "cola.h"
 
-void mostrar(struct Cola **mcola){
-
-  while (mcola != NULL) {
-    printf("%d\n", eliminar(mcola));
-  }
-
-}
-
-void insertar(struct Cola **mcola, int num){
-
-  struct Cola *nodotemporal = malloc(sizeof(struct Cola));
-  struct Cola *ultimo = *mcola;
-
-  nodotemporal -> dato = num;
-  nodotemporal -> siguiente = NULL;
-
-	// Sí la lista no cuenta con ningún nodo, se creará el primero.
-  if (*mcola == NULL) {
-    *mcola = nodotemporal;
-	return;
-} else {
-
-  // Recorre toda la lista y liga el nodotemporal al final de la lista.
-  while (ultimo -> siguiente != NULL){
-    ultimo = ultimo -> siguiente; // el bueno
-  }
-
-  ultimo -> siguiente = nodotemporal;
-}
-
-}
-
-int eliminar(struct Cola **mcola){
-
-    if(*mcola == NULL){
-      exit(1);
+void ponerencola(int item)
+{
+    struct nodo *nuevo = malloc(sizeof(struct nodo));
+    nuevo->dato = item;
+    nuevo->siguiente = NULL;
+    if (siguiente == NULL)
+    {
+        frente = nuevo;
+        siguiente = nuevo;
     }
+    else
+    {
+        siguiente->siguiente = nuevo;
+        siguiente = siguiente->siguiente;
+    }
+}
 
-    int num = (**mcola).dato;
+void mostrar()
+{
+    struct nodo *temporal;
+    temporal = frente;
+    printf("\n");
+    while (temporal != NULL)
+    {
+        printf("%d\t", temporal->dato);
+        temporal = temporal->siguiente;
+    }
+}
 
-    struct Cola *temporal = *mcola;
-
-      *mcola = temporal -> siguiente;
-
-      free(temporal);
-
-    return num;
+void quitardelacola()
+{
+    if (frente == NULL)
+    {
+        printf("\n\nla cola esta vacia \n");
+    }
+    else
+    {
+        struct nodo *temporal;
+        temporal = frente;
+        frente = frente->siguiente;
+        printf("\n\n%d quitado de la cola", temporal->dato);
+        free(temporal);
+    }
 }

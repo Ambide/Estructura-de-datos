@@ -6,13 +6,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Cola{
-  int dato;
-  struct Cola *siguiente;
+struct nodo
+{
+    int dato;
+    struct nodo *siguiente;
 };
 
-void mostrar(struct Cola **mcola);
-void insertar(struct Cola **mcola, int num);
-int eliminar(struct Cola **mcola);
+struct nodo *frente = NULL;
+struct nodo *siguiente = NULL;
+
+void mostrar();
+void ponerencola(int);
+void quitardelacola();
 
 #endif
