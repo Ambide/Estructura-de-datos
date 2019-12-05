@@ -2,17 +2,11 @@
 #define __Pila_H__
 #include <stdio.h>
 #include <stdlib.h>
-
-struct nodo{
-	int dato;
-	struct nodo* siguiente;
-};
-
-struct nodo* primero = NULL;
-
-void insertarNodo();
-void buscarNodo();
-void modificarNodo();
-void eliminarNodo();
-void desplegarPila();
+int pila[5];
+void push();
+int pop();
+void mostrar();
+int estavacia();
+int elementotope();
+int tope = 0;
 #endif
