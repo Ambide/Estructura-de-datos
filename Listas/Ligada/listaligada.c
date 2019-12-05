@@ -1,124 +1,110 @@
 #include "listaligada.h"
-// primero = 7     ultimo = 9     actual = 2  anterior = 3   nodoBuscado = 2   encontrado = 0
 
-/// Lista   7 -> 3 -> 2 -> 9 -> NULL
+void insertaralprincipio(int x) {
+  struct nodo *t;
 
-// 7, 5, 2, 9
+  t = (struct nodo*)malloc(sizeof(struct nodo));
+  t->dato = x;
+  conteo++;
 
-void insertarNodo(){
-	struct nodo* nuevo = (struct nodo*) malloc(sizeof(struct nodo));
-	printf(" Ingrese el dato que contendra el nuevo Nodo: ");
-	scanf("%d", &nuevo->dato);
-	if(primero==NULL){
-		primero = nuevo;
-		primero->siguiente = NULL;
-		ultimo = nuevo;
-	}else{
-		ultimo->siguiente = nuevo;
-		nuevo->siguiente = NULL;
-		ultimo = nuevo;
-	}
-	printf("\n Nodo ingresado con Exito\n\n");
+  if (primero == NULL) {
+    primero = t;
+    primero->siguiente = NULL;
+    return;
+  }
+
+  t->siguiente = primero;
+  primero = t;
 }
 
-void buscarNodo(){
-	struct nodo* actual = (struct nodo*) malloc(sizeof(struct nodo));
-	actual = primero;
-	int nodoBuscado = 0, encontrado = 0;
-	printf(" Ingrese el dato del nodo a Buscar: ");
-	scanf("%d", &nodoBuscado);
-	if(primero!=NULL){
-		while(actual != NULL && encontrado != 1){
-			
-			if(actual->dato == nodoBuscado){
-				printf("\n El nodo con el dato ( %d ) Encontrado\n\n", nodoBuscado);
-				encontrado = 1;
-			}
-				
-			actual = actual->siguiente;
-		}
-		if(encontrado == 0){
-			printf("\n Nodo no encontrado\n\n");
-		}
-	}else{
-		printf("\n La lista se encuentra vacia\n\n");
-	}
+void insertaralfinal(int x) {
+  struct nodo *t, *temporal;
+
+  t = (struct nodo*)malloc(sizeof(struct nodo));
+  t->dato = x;
+  conteo++;
+
+  if (primero == NULL) {
+    primero = t;
+    primero->siguiente = NULL;
+    return;
+  }
+
+  temporal = primero;
+
+  while (temporal->siguiente != NULL)
+    temporal = temporal->siguiente;
+
+  temporal->siguiente = t;
+  t->siguiente   = NULL;
 }
 
-void modificarNodo(){
-	struct nodo* actual = (struct nodo*) malloc(sizeof(struct nodo));
-	actual = primero;
-	int nodoBuscado = 0, encontrado = 0;
-	printf(" Ingrese el dato del nodo a Buscar para Modificar: ");
-	scanf("%d", &nodoBuscado);
-	if(primero!=NULL){
-		while(actual != NULL && encontrado != 1){
-			
-			if(actual->dato == nodoBuscado){
-				printf("\n El nodo con el dato ( %d ) Encontrado", nodoBuscado);
-				printf("\n Ingrese el nuevo dato para este Nodo: ");
-				scanf("%d", &actual->dato);
-				printf("\n Nodo modificado con exito\n\n");
-				encontrado = 1;
-			}
-				
-			actual = actual->siguiente;
-		}
-		if(encontrado == 0){
-			printf("\n Nodo no encontrado\n\n");
-		}
-	}else{
-		printf("\n La lista se encuentra vacia\n\n");
-	}
+void mostrar() {
+  struct nodo *t;
+
+  t = primero;
+
+  if (t == NULL) {
+    printf("La lista ligada esta vacia.\n");
+    return;
+  }
+
+  printf("Hay %d elementos en la lista ligada.\n", conteo);
+
+  while (t->siguiente != NULL) {
+    printf("%d\n", t->dato);
+    t = t->siguiente;
+  }
+  printf("%d\n", t->dato); // Imprime último nodo
 }
 
-void eliminarNodo(){
-	struct nodo* actual = (struct nodo*) malloc(sizeof(struct nodo));
-	actual = primero;
-	struct nodo* anterior = (struct nodo*) malloc(sizeof(struct nodo));
-	anterior = NULL;
-	int nodoBuscado = 0, encontrado = 0;
-	printf(" Ingrese el dato del nodo a Buscar para Eliminar: ");
-	scanf("%d", &nodoBuscado);
-	if(primero!=NULL){
-		while(actual != NULL && encontrado != 1){
-			
-			if(actual->dato == nodoBuscado){
-	
-				if(actual == primero){
-					primero = primero->siguiente;
-				}else if(actual == ultimo){
-					anterior->siguiente = NULL;
-					ultimo = anterior;
-				}else{
-					anterior->siguiente = actual->siguiente;
-				}
-				
-				printf("\n Nodo eliminado con exito");
-				encontrado = 1;
-			}
-			anterior = actual;
-			actual = actual->siguiente;
-		}
-		if(encontrado == 0){
-			printf("\n Nodo no encontrado\n\n");
-		}else{
-			free(anterior);
-		}
-	}else{
-		printf("\n La lista se encuentra vacia\n\n");
-	}
+void borrardesdeprincipio() {
+  struct nodo *t;
+  int n;
+
+  if (primero == NULL) {
+    printf("La lista ligada esta vacia.\n");
+    return;
+  }
+
+  n = primero->dato;
+  t = primero->siguiente;
+  free(primero);
+  primero = t;
+  conteo--;
+
+  printf("%d eliminado desde el principio con éxito.\n", n);
 }
 
-void desplegarLista(){
-	struct nodo* actual = (struct nodo*) malloc(sizeof(struct nodo));
-	actual = primero;
-	if(primero!=NULL){
-		while(actual != NULL){
-			printf("\n %d", actual->dato);
-			actual = actual->siguiente;
-		}
-	}else{
-		printf("\n La lista se encuentra vacia\n\n");
-	}
+void borrardesdefinal() {
+  struct nodo *t, *u;
+  int n;
+
+  if (primero == NULL) {
+    printf("La lista ligada esta vacia.\n");
+    return;
+  }
+
+  conteo--;
+
+  if (primero->siguiente == NULL) {
+    n = primero->dato;
+    free(primero);
+    primero = NULL;
+    printf("%d eliminado del final con éxito.\n", n);
+    return;
+  }
+
+  t = primero;
+
+  while (t->siguiente != NULL) {
+    u = t;
+    t = t->siguiente;
+  }
+
+  n = t->dato;
+  u->siguiente = NULL;
+  free(t);
+
+  printf("%d eliminado del final con éxito.\n", n);
 }

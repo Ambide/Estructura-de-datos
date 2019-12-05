@@ -1,38 +1,36 @@
-#include "listaligada.c"
-int main(){
-int opcionMenu = 0;
-	do{
-		printf("\nEstructura Lista");
-		printf("\n1-insertar\n");
-		printf("\n2-Buscar\n");
-		printf("\n3-Modificar\n");
-		printf("\n4-Eliminar\n");
-		printf("\n5-Imprimir\n");
-		printf("\n6-Salir");
-		printf("\nEscoja una Opcion: ");
-		scanf("%d", &opcionMenu);
-		switch(opcionMenu){
-			case 1:
-				insertarNodo();
-				break;
-			case 2:
-				buscarNodo();
-				break;
-			case 3:
-				modificarNodo();
-				break;
-			case 4:
-				eliminarNodo();
-				break;
-			case 5:
-				desplegarLista();
-				break;
-			case 6:
-			printf("\n\n Terminado.\n");
-				break;
-			default:
-				printf("\n\n Opcion no Valida \n\n");
-		}
-	}while(opcionMenu != 6);
-	return 0;
+#include "listaligada.h"
+
+int main () {
+  int i, dato;
+  while (1) {
+    printf("1. Insertar un elemento al comienzo de la lista ligada.\n");
+    printf("2. Inserte un elemento al final de la lista ligada.\n");
+    printf("3. mostrar lista ligada.\n");
+    printf("4. Eliminar un elemento desde el principio.\n");
+    printf("5. Eliminar un elemento del final.\n");
+    printf("6. Salir\n");
+    scanf("%d", &i);
+
+    if (i == 1) {
+      printf("Ingrese el valor del elemento\n");
+      scanf("%d", &dato);
+      insertaralprincipio(dato);
+    }
+    else if (i == 2) {
+      printf("Ingrese el valor del elemento\n");
+      scanf("%d", &dato);
+      insertaralfinal(dato);
+    }
+    else if (i == 3)
+      mostrar();
+    else if (i == 4)
+      borrardesdeprincipio();
+    else if (i == 5)
+      borrardesdefinal();
+    else if (i == 6)
+      break;
+    else
+      printf("Por favor, introduzca una opcion valida.\n");
+  }
+  return 0;
 }

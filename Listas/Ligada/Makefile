@@ -1,13 +1,10 @@
-listaligada.o: listaligada.c
-	gcc listaligada.c -c -Wall
-main.o: main.c
-	gcc main.c -c -Wall
-
 a.out: main.o listaligada.o
 	gcc main.o listaligada.o
-
+main.o: main.c
+	gcc -c main.c
+arbol.o: listaligada.c
+	gcc -c listaligada.c
 run: a.out
 	./a.out
-
-clean:
-	rm -f *.o a.out
+clear:
+	rm a.out main.o listaligada.o 
