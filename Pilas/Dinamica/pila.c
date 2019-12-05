@@ -1,5 +1,6 @@
 #include "pila.h"
-
+int tope = 0;
+int pila[5];
 void push(int valor) {
   pila[tope] = valor;
   tope++;
