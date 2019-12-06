@@ -1,5 +1,5 @@
 #include "simple.h"
-
+struct nodo *primero = NULL;
 void agregaralfinal(int valor)
 {
     struct nodo *nuevo = malloc(sizeof(struct nodo));

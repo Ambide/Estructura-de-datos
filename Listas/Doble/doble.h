@@ -13,9 +13,6 @@ struct doblenodo
     int dato;
     struct doblenodo *siguiente;
 };
-
-struct doblenodo *primero = NULL;
-
 void agregarfinal(int);
 void agregarprincipio(int);
 void eliminar(int);

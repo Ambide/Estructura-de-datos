@@ -1,9 +1,10 @@
 #include "doble.h"
+
 /* añade un nuevo nodo al final de la lista doble */
+struct doblenodo *primero = NULL;
 void agregarfinal(int num)
 {
     struct doblenodo *nuevo,  *temporal = primero;
-
     /*Crea un nuevo nodo */
     nuevo = malloc(sizeof(struct doblenodo));
     nuevo->dato = num;

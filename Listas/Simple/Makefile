@@ -1,10 +1,10 @@
-a.out: main.o listaligada.o
-	gcc main.o listaligada.o
+a.out: main.o simple.o
+	gcc main.o simple.o
 main.o: main.c
 	gcc -c main.c
-arbol.o: listaligada.c
-	gcc -c listaligada.c
+arbol.o: simple.c
+	gcc -c simple.c
 run: a.out
 	./a.out
 clear:
-	rm a.out main.o listaligada.o 
+	rm a.out main.o simple.o

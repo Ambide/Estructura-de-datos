@@ -8,9 +8,6 @@ struct nodo
     int dato;
     struct nodo *siguiente;
 };
-
-struct nodo *primero = NULL;
-
 void agregaralfinal(int);
 void mostrar();
 void agregaralprincipio(int);

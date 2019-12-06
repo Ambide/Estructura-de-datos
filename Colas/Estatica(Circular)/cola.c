@@ -1,4 +1,6 @@
 #include "cola.h"
+int frente =  - 1;
+int siguiente =  - 1;
 void agregar(int cola[], int item)
 {
     if ((frente == 0 && siguiente == tamanio - 1) || (frente == siguiente + 1))
