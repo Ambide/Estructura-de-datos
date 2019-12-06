@@ -2,7 +2,6 @@
 #define __Pila_H__
 #include <stdio.h>
 #include <stdlib.h>
-
 void push();
 int pop();
 void mostrar();

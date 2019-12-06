@@ -2,6 +2,7 @@
 	int main()
 	{
 	  int elemento, opcion;
+		int temp=tope;
 
 	  while(1)
 	  {
@@ -18,7 +19,7 @@
 	    switch (opcion)
 	    {
 	      case 1:
-	        if (tope == 5)
+	        if (temp == 5)
 	          printf("Error: Desbordamiento\n\n");
 	        else {
 	          printf("Ingrese el valor a insertar.\n");
@@ -28,7 +29,7 @@
 	        break;
 
 	      case 2:
-	        if (tope == 0)
+	        if (temp == 0)
 	          printf("Error: Desbordamiento.\n\n");
 	        else {
 	          elemento = pop();
